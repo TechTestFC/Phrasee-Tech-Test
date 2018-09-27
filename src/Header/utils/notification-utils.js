@@ -1,5 +1,5 @@
 
-const getNamesFromEvents = (events) => {
+export const getNamesFromEvents = (events) => {
     if (events.length === 1) {
         return events[0].name || 'Someone';
     }
@@ -12,13 +12,13 @@ const getNamesFromEvents = (events) => {
     const singularOrPlural = numberOfOtherPeople === 1 ? 'other' : 'others';
     return `${events[0].name}, ${events[1].name} and ${numberOfOtherPeople} ${singularOrPlural}`;
 } 
-const getCommentTextObject = (notification) => {
+export const getCommentTextObject = (notification) => {
     return {
         names: getNamesFromEvents(notification.comments),
         action: 'commented',
     }
 };
-const getLikeTextObject = (notification) => {
+export const getLikeTextObject = (notification) => {
     return {
         names: getNamesFromEvents(notification.likes),
         action: 'liked',

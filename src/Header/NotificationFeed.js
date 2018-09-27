@@ -4,7 +4,7 @@ import NotificationList from './NotificationList';
 import notification from '../assets/notification.png';
 import CenterDiv from '../common/CenterDiv';
 
-const Wrapper = glamorous(CenterDiv)({
+export const ClickableWrapper = glamorous(CenterDiv)({
     position: 'relative',
 });
 const Img = glamorous.img({
@@ -13,7 +13,7 @@ const Img = glamorous.img({
     cursor: 'pointer',
     position: 'relative',
 });
-const NotificationCount = glamorous.span({
+export const NotificationCount = glamorous.span({
     position: 'absolute',
     left: '75%',
     backgroundColor: 'red',
@@ -50,11 +50,11 @@ class NotificationFeed extends React.Component {
     render() {
         const notificationCount = this.state.notifications.filter((notification) => !notification.seen).length;
         return (
-            <Wrapper onClick={this.toggleNotifications}>
-                <Img src={notification} notificationCount={notificationCount} />
+            <ClickableWrapper onClick={this.toggleNotifications}>
+                <Img src={notification} />
                 {notificationCount > 0 && <NotificationCount>{notificationCount}</NotificationCount>}
                 <NotificationList notifications={this.state.notifications} show={this.state.showNotifications} />
-            </Wrapper>
+            </ClickableWrapper>
         );
     }
 }
